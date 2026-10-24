@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jailbreak Prompts</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+    span {
+      color: #ff0000;
+      font-weight: bold;
+    }
+    button {
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-family: inherit;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #fff;
+      color: #000;
+    }
+    /* Das Jumpscare Overlay */
+    #scare {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    #scare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Macht das Bild gruseliger */
+      filter: contrast(200%) brightness(80%) grayscale(100%);
+      animation: shake 0.1s infinite;
+    }
+    @keyframes shake {
+      0% { transform: translate(2px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(0px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(2px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(2px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Explore Jailbreak Prompts<br>from <span>agamer</span></h1>
+  <button id="startBtn">Explore</button>
+
+  <!-- Jumpscare Bereich -->
+  <div id="scare">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Question_book-new.svg/800px-Question_book-new.svg.png" alt="Scare" id="scareImg">
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="scream">
+    <source src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Scary_scream.ogg" type="audio/ogg">
+  </audio>
+
+  <script>
+    document.getElementById('startBtn').addEventListener('click', function() {
+      // 1. Audio abspielen
+      var audio = document.getElementById('scream');
+      audio.volume = 1.0;
+      audio.play();
+
+      // 2. Jumpscare Overlay anzeigen
+      document.getElementById('scare').style.display = 'flex';
+      
+      // 3. (Optional) Nach 2 Sekunden wieder ausblenden. Wenn du willst, dass es für immer bleibt, lösche diese Zeilen.
+      setTimeout(function() {
+        document.getElementById('scare').style.display = 'none';
+        document.body.style.backgroundColor = '#500'; // Roter Hintergrund nach dem Schock
+        document.querySelector('h1').innerHTML = "You have been compromised.";
+        document.querySelector('button').style.display = 'none';
+      }, 2000);
+    });
+  </script>
+
+</body>
+</html>
